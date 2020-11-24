@@ -12,7 +12,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
 #     CreateAPIView,
 #     DestroyAPIView,
 #     UpdateAPIView,
-# )
+#)
 
 
 # class ArticleListView(ListAPIView):
