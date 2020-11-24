@@ -56,6 +56,8 @@ const Articles = (props) => {
             description={item.description}
           />
           {item.content}
+          <br />
+          {item.value}
         </List.Item>
       )}
     />

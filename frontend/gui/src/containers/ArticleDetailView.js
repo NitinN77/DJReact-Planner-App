@@ -36,6 +36,7 @@ export default class ArticleDetail extends Component {
             <div>
                 <Card title={this.state.article.title}>
                     <p>{this.state.article.content}</p>
+                    <p>{this.state.article.value}</p>
                 </Card>
                 <br />
                 <CustomForm 
