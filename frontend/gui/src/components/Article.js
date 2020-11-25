@@ -42,14 +42,15 @@ class Articles extends Component {
                 display: 'flex',
                 alignItems: 'center',
                 flex: 'wrap'}}>
-                <a href={`article/${item.id}/`}>{item.title}</a>{" "}{" "}
-                <IconButton onClick={() => this.handleTick(item.id)}>
+                { this.state.completed[item.id] ? <a href={`article/${item.id}/`}><del>{item.title}</del></a> : <a href={`article/${item.id}/`}>{item.title}</a> }
+                {" "}{" "}
+                <IconButton onClick={() => this.handleTick(item.id)}> 
                   { this.state.completed[item.id] ? <CheckBoxIcon /> : <CheckBoxOutlineBlankIcon />}
                 </IconButton>
               </div>
               }
             />
-            {item.content}
+            { this.state.completed[item.id] ? <div><del>{item.content}</del></div> : <div>{item.content}</div> }
             <br />
             by {item.author}
           </List.Item>
