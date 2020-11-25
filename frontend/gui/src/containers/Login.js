@@ -27,7 +27,6 @@ class NormalLoginForm extends Component {
 
 
   onFinish = values => {
-    console.log('Success:', values);
     this.props.onAuth(values.username, values.password);
     this.props.history.push('/');
   };

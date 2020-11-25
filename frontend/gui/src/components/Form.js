@@ -16,7 +16,7 @@ export default class CustomForm extends Component {
     handleFormSubmit = async (event, requestType, articleID, author ) => {
         const title = event.target.elements.title.value;
         const content = event.target.elements.content.value;
-        
+
         switch (requestType) {
             case 'post':
                 try {
@@ -25,7 +25,6 @@ export default class CustomForm extends Component {
                 content: content,
                 author: author,
               });
-              return console.log(res);
             } catch (err) {
               return console.log(err);
             }
@@ -35,7 +34,6 @@ export default class CustomForm extends Component {
                 title: title,
                 content: content
               });
-              return console.log(res_1);
             } catch (err_1) {
               return console.log(err_1);
             }
