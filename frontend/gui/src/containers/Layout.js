@@ -10,6 +10,7 @@ const { Header, Content, Footer } = Layout;
 
 class CustomLayout extends Component{
   render() {
+    console.log(localStorage.getItem('user'));  
     return(
       <Layout className="layout">
       <Header>
@@ -19,9 +20,9 @@ class CustomLayout extends Component{
           ? 
           <Menu.Item key="1" onClick={this.props.logout}>Logout</Menu.Item>
           :
-          <Menu.Item key="2"><Link to='/login'>Login</Link></Menu.Item>
+          <Menu.Item key="1"><Link to='/login'>Login</Link></Menu.Item>
           }
-          <Menu.Item key="1"><Link to='/'>Posts</Link></Menu.Item>
+          <Menu.Item key="2"><Link to='/'>Posts</Link></Menu.Item>
         </Menu>
       </Header>
       <Content style={{ padding: '0 50px' }}>
