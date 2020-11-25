@@ -13,25 +13,31 @@ const formItemLayout = {
 
 export default class CustomForm extends Component {
 
-    handleFormSubmit = (event, requestType, articleID ) => {
+    handleFormSubmit = async (event, requestType, articleID ) => {
         const title = event.target.elements.title.value;
         const content = event.target.elements.content.value;
 
         switch (requestType) {
             case 'post':
-                return axios.post('http://127.0.0.1:8000/api/', {
-                    title: title,
-                    content: content,
-                })
-                .then(res => console.log(res))
-                .catch(err => console.log(err));
+                try {
+              const res = await axios.post('http://127.0.0.1:8000/api/', {
+                title: title,
+                content: content,
+              });
+              return console.log(res);
+            } catch (err) {
+              return console.log(err);
+            }
             case 'put':
-                return axios.put(`http://127.0.0.1:8000/api/${articleID}/`, {
-                    title: title,
-                    content: content
-                })
-                .then(res => console.log(res))
-                .catch(err => console.log(err));
+                try {
+              const res_1 = await axios.put(`http://127.0.0.1:8000/api/${articleID}/`, {
+                title: title,
+                content: content
+              });
+              return console.log(res_1);
+            } catch (err_1) {
+              return console.log(err_1);
+            }
             default:
                 break
         }

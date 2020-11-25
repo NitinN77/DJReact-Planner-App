@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import axios from 'axios';
 
 import { Card, Button } from 'antd';
@@ -11,14 +11,17 @@ export default class ArticleDetail extends Component {
     }
 
     componentDidMount() {
-
         const articleID = this.props.match.params.articleID;
 
-        axios.get(`http://127.0.0.1:8000/api/${articleID}`)
+        axios.get(`http://127.0.0.1:8000/api/${articleID}/`)
             .then(res => {
                 this.setState({
                     article: res.data,
                 });
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.log(err);
             })
     }
 
@@ -26,7 +29,7 @@ export default class ArticleDetail extends Component {
 
         const articleID = this.props.match.params.articleID;
 
-        axios.delete(`http://127.0.0.1:8000/api/${articleID}`);
+        axios.delete(`http://127.0.0.1:8000/api/${articleID}/`);
         this.props.history.push('/');
 
     }
