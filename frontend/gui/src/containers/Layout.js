@@ -6,7 +6,7 @@ import * as actions from "../store/actions/auth";
 
 import './Layout.css'
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 class CustomLayout extends Component{
   render() {
@@ -21,19 +21,18 @@ class CustomLayout extends Component{
           :
           <Menu.Item key="1"><Link to='/login'>Login</Link></Menu.Item>
           }
-          <Menu.Item key="2"><Link to='/'>Posts</Link></Menu.Item>
+          <Menu.Item key="2"><Link to='/'>Tasks</Link></Menu.Item>
         </Menu>
       </Header>
-      <Content style={{ padding: '0 50px' }}>
+      <Content style={{ padding: '0 50px', height: '100vh'}}>
         <Breadcrumb style={{ margin: '16px 0' }}>
           <Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
-          <Breadcrumb.Item><Link to="/">List</Link></Breadcrumb.Item>
+          <Breadcrumb.Item><Link to="/">Task List</Link></Breadcrumb.Item>
         </Breadcrumb>
           <div className="site-layout-content">
             {this.props.children}
           </div>
       </Content>
-      <Footer style={{ textAlign: 'center' }}></Footer>
     </Layout>
     );
   }

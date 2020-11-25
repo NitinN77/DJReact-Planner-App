@@ -1,67 +1,63 @@
-import React from "react";
+import React, { Component } from "react";
 
-import { List, Avatar, Space } from "antd";
-import { MessageOutlined, LikeOutlined, StarOutlined } from "@ant-design/icons";
+import { List } from "antd";
 
-const IconText = ({ icon, text }) => (
-  <Space>
-    {React.createElement(icon)}
-    {text}
-  </Space>
-);
+import { IconButton } from '@material-ui/core';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
-const Articles = (props) => {
-  return (
-    <List
-      itemLayout="vertical"
-      size="large"
-      pagination={{
-        onChange: (page) => {
-          console.log(page);
-        },
-        pageSize: 3,
-      }}
-      dataSource={props.data}
-      renderItem={(item) => (
-        <List.Item
-          key={item.title}
-          actions={[
-            <IconText
-              icon={StarOutlined}
-              text="156"
-              key="list-vertical-star-o"
-            />,
-            <IconText
-              icon={LikeOutlined}
-              text="156"
-              key="list-vertical-like-o"
-            />,
-            <IconText
-              icon={MessageOutlined}
-              text="2"
-              key="list-vertical-message"
-            />,
-          ]}
-          extra={
-            <img
-              width={272}
-              alt="logo"
-              src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+class Articles extends Component {
+
+  state = {
+    completed: Array(this.props.data.length).fill(false),
+  }
+
+  handleTick = (id) => {
+    if (id) {
+      let a = this.state.completed.slice();
+      a[id] = !a[id];
+      this.setState({ completed: a});
+    }
+  }
+
+  render(){
+    return (
+      <List
+        itemLayout="vertical"
+        size="large"
+        pagination={{
+          onChange: (page) => {
+            console.log(page);
+          },
+          pageSize: 3,
+        }}
+        dataSource={this.props.data}
+        renderItem={(item) => (
+          <List.Item
+            key={item.id}
+          >
+            <List.Item.Meta
+              title={
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                flex: 'wrap'}}>
+                <a href={`article/${item.id}/`}>{item.title}</a>{" "}{" "}
+                <IconButton onClick={() => this.handleTick(item.id)}>
+                  { this.state.completed[item.id] ? <CheckBoxIcon /> : <CheckBoxOutlineBlankIcon />}
+                </IconButton>
+              </div>
+              }
             />
-          }
-        >
-          <List.Item.Meta
-            avatar={<Avatar src={item.avatar} />}
-            title={<a href={`article/${item.id}/`}>{item.title}</a>}
-            description={item.description}
-          />
-          {item.content}
-          <br />
-          {item.author}
-        </List.Item>
-      )}
-    />
-  );
+            {item.content}
+            <br />
+            by {item.author}
+          </List.Item>
+        )}
+      />
+    );
+  }
+  
 };
 
 export default Articles;

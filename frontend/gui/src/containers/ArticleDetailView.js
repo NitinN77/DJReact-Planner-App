@@ -25,6 +25,21 @@ export default class ArticleDetail extends Component {
             })
     }
 
+    componentDidUpdate() {
+        const articleID = this.props.match.params.articleID;
+
+        axios.get(`http://127.0.0.1:8000/api/${articleID}/`)
+            .then(res => {
+                this.setState({
+                    article: res.data,
+                });
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
     handleDelete = (event) => {
 
         const articleID = this.props.match.params.articleID;
@@ -39,7 +54,6 @@ export default class ArticleDetail extends Component {
             <div>
                 <Card title={this.state.article.title}>
                     <p>{this.state.article.content}</p>
-                    <p>{this.state.article.value}</p>
                 </Card>
                 <br />
                 <CustomForm 
