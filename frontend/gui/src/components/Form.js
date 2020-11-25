@@ -13,16 +13,17 @@ const formItemLayout = {
 
 export default class CustomForm extends Component {
 
-    handleFormSubmit = async (event, requestType, articleID ) => {
+    handleFormSubmit = async (event, requestType, articleID, author ) => {
         const title = event.target.elements.title.value;
         const content = event.target.elements.content.value;
-
+        
         switch (requestType) {
             case 'post':
                 try {
               const res = await axios.post('http://127.0.0.1:8000/api/', {
                 title: title,
                 content: content,
+                author: author,
               });
               return console.log(res);
             } catch (err) {
@@ -48,7 +49,7 @@ export default class CustomForm extends Component {
         return (
             <>
               <Form {...formItemLayout} 
-              onSubmitCapture={(event) => this.handleFormSubmit(event, this.props.requestType, this.props.articleID)}>
+              onSubmitCapture={(event) => this.handleFormSubmit(event, this.props.requestType, this.props.articleID, this.props.author)}>
                 <Form.Item label="Title">
                   <Input name="title" placeholder="Put a title here " />
                 </Form.Item>

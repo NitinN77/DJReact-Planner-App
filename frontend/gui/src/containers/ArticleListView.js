@@ -29,7 +29,8 @@ export default class ArticleList extends Component {
                 <CustomForm 
                 requestType="post"
                 articleID={null}
-                btnText="Create"/>
+                btnText="Create"
+                author={localStorage.getItem('user')}/>
             </div>
         )
     }

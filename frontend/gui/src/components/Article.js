@@ -57,7 +57,7 @@ const Articles = (props) => {
           />
           {item.content}
           <br />
-          {item.value}
+          {item.author}
         </List.Item>
       )}
     />

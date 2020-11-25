@@ -10,7 +10,6 @@ const { Header, Content, Footer } = Layout;
 
 class CustomLayout extends Component{
   render() {
-    console.log(localStorage.getItem('user'));  
     return(
       <Layout className="layout">
       <Header>
