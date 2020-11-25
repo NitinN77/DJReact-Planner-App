@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import reducer from './store/reducers/auth';
 import { Provider } from 'react-redux';
 
+
 const composeEnhances = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE || compose;
 
 const store = createStore(reducer, composeEnhances(

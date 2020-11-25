@@ -45,14 +45,12 @@ class Articles extends Component {
                 { this.state.completed[item.id] ? <a href={`article/${item.id}/`}><del>{item.title}</del></a> : <a href={`article/${item.id}/`}>{item.title}</a> }
                 {" "}{" "}
                 <IconButton onClick={() => this.handleTick(item.id)}> 
-                  { this.state.completed[item.id] ? <CheckBoxIcon /> : <CheckBoxOutlineBlankIcon />}
+                  { this.state.completed[item.id] ? <CheckBoxIcon  style={{float: 'right'}}/> : <CheckBoxOutlineBlankIcon  style={{float: 'right'}}/>}
                 </IconButton>
               </div>
               }
             />
             { this.state.completed[item.id] ? <div><del>{item.content}</del></div> : <div>{item.content}</div> }
-            <br />
-            by {item.author}
           </List.Item>
         )}
       />
