@@ -24,7 +24,7 @@ class CustomLayout extends Component{
           <Menu.Item key="2"><Link to='/'>Tasks</Link></Menu.Item>
         </Menu>
       </Header>
-      <Content style={{ padding: '0 50px', height: '100vh'}}>
+      <Content style={{ padding: '0 50px', height: '100vh'}} className="content1">
         <Breadcrumb style={{ margin: '16px 0' }}>
           <Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
           <Breadcrumb.Item><Link to="/">Task List</Link></Breadcrumb.Item>

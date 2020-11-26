@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
+from django.db import models
 
 class Article(models.Model):
     title = models.CharField(max_length=120)

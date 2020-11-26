@@ -1,0 +1,9 @@
+p {
+    font-size: 130%;
+    white-space: pre-line;
+}
+
+.done {
+    font-style: italic;
+    color: rgba(97, 97, 97, 0.3);
+}

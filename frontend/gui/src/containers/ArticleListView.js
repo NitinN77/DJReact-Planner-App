@@ -22,15 +22,6 @@ export default class ArticleList extends Component {
             })
     }
 
-    componentDidUpdate() {
-        axios.get('http://127.0.0.1:8000/api/')
-            .then(res => {
-                this.setState({
-                    articles: res.data.filter((article) => article.author === localStorage.getItem('user')),
-                });
-            })
-    }
-
     handleClick = () => {
         this.setState({formactivated: !this.state.formactivated});
     }
@@ -38,8 +29,6 @@ export default class ArticleList extends Component {
     render() {
         return (
             <div>
-                <Articles data={this.state.articles}/>
-                <br />
                 <Button type="primary" onClick={this.handleClick}>Add Task</Button>
                 {
                     this.state.formactivated 
@@ -55,6 +44,9 @@ export default class ArticleList extends Component {
                     :
                     null
                 }
+                <br />
+                <br />
+                <Articles data={this.state.articles}/>
             </div>
         );
     }

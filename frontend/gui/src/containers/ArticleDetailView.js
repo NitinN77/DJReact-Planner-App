@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react'
+import React, { Component } from 'react'
 import axios from 'axios';
 
 import { Card, Button } from 'antd';
@@ -18,22 +18,6 @@ export default class ArticleDetail extends Component {
                 this.setState({
                     article: res.data,
                 });
-                console.log(res.data);
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
-    componentDidUpdate() {
-        const articleID = this.props.match.params.articleID;
-
-        axios.get(`http://127.0.0.1:8000/api/${articleID}/`)
-            .then(res => {
-                this.setState({
-                    article: res.data,
-                });
-                console.log(res.data);
             })
             .catch(err => {
                 console.log(err);

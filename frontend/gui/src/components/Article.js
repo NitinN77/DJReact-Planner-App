@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { List } from "antd";
+import './Article.css';
 
 import { IconButton } from '@material-ui/core';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
@@ -22,7 +23,8 @@ class Articles extends Component {
 
   render(){
     return (
-      <List
+      <div>
+        <List style={{backgroundColor: '#fff', padding: '30px'}}
         itemLayout="vertical"
         size="large"
         pagination={{
@@ -38,22 +40,19 @@ class Articles extends Component {
           >
             <List.Item.Meta
               title={
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                flex: 'wrap'}}>
-                { this.state.completed[item.id] ? <a href={`article/${item.id}/`}><del>{item.title}</del></a> : <a href={`article/${item.id}/`}>{item.title}</a> }
-                {" "}{" "}
-                <IconButton onClick={() => this.handleTick(item.id)}> 
-                  { this.state.completed[item.id] ? <CheckBoxIcon  style={{float: 'right'}}/> : <CheckBoxOutlineBlankIcon  style={{float: 'right'}}/>}
+              <div style={{display: 'inline-flex'}}>
+                { this.state.completed[item.id] ? <a href={`article/${item.id}/`}><h2 className="done">{item.title}</h2></a> : <a href={`article/${item.id}/`}><h2>{item.title}</h2></a> }
+                <IconButton onClick={() => this.handleTick(item.id)} style={{position:'absolute', right:0}}> 
+                  { this.state.completed[item.id] ? <CheckBoxIcon /> : <CheckBoxOutlineBlankIcon />}
                 </IconButton>
               </div>
               }
             />
-            { this.state.completed[item.id] ? <div><del>{item.content}</del></div> : <div>{item.content}</div> }
+            { this.state.completed[item.id] ? <p className="done">{item.content}</p> : <p>{item.content}</p> }
           </List.Item>
         )}
       />
+      </div>
     );
   }
   

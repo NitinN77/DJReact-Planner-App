@@ -4,6 +4,7 @@ import BaseRouter from './routes';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/auth';
+import './App.css'
 
 import 'antd/dist/antd.css';
 
